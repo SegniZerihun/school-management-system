@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <span>Admin Dashboard</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <div class="content">
+    <mat-tab-group>
+      <mat-tab label="Subjects">
+        <app-subject-list></app-subject-list>
+      </mat-tab>
+      <mat-tab label="Grades">
+        <app-grade-list></app-grade-list>
+      </mat-tab>
+      <mat-tab label="Teachers">
+        <app-user-list [userRole]="'Teacher'"></app-user-list>
+      </mat-tab>
+      <mat-tab label="Students">
+        <app-user-list [userRole]="'Student'"></app-user-list>
+      </mat-tab>
+    </mat-tab-group>
+  </div>

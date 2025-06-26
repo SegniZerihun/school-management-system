@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Import the Angular Material theme you chose during setup.
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  // Set a light background for the whole app to prevent theme conflicts.
+  background-color: #f4f7f6;
+}
+
+// Custom class for error popups.
+.error-snackbar {
+  background-color: #f44336; // Red color for errors
+  color: white;
+}
+
+// A general container class we can use for padding.
+.container {
+  padding: 24px;
+}

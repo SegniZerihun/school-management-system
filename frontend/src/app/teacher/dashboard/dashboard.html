@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+    <span>Teacher Dashboard</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="authService.logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>
+  
+<div class="dashboard-container">
+    <!-- Column 1: List of Students -->
+    <div class="student-list-container">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Students</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item 
+                        role="listitem" 
+                        *ngFor="let student of students" 
+                        (click)="selectStudent(student)"
+                        [class.selected]="student._id === selectedStudent?._id">
+                        {{ student.name }}
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <!-- Column 2: Marks for Selected Student -->
+    <div class="marks-container">
+        <div *ngIf="selectedStudent; else noStudentSelected">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>Assign Marks for {{ selectedStudent.name }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div *ngFor="let subject of subjects" class="subject-mark-row">
+                        <span class="subject-name">{{ subject.name }}</span>
+                        <mat-form-field appearance="outline" class="mark-input">
+                            <mat-label>Mark</mat-label>
+                            <!-- Use two-way binding with ngModel -->
+                            <input 
+                                matInput 
+                                type="number" 
+                                placeholder="0-100" 
+                                [(ngModel)]="marks[subject._id]"
+                                (change)="onMarkChange(subject._id, $any($event.target).value)">
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <ng-template #noStudentSelected>
+            <div class="placeholder-text">
+                <h2>Please select a student from the list to view and assign marks.</h2>
+            </div>
+        </ng-template>
+    </div>
+</div>
