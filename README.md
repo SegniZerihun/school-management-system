@@ -2,6 +2,7 @@
 
 A simple school management system built with the MEAN Stack (MongoDB, Express.js, Angular, Node.js). This application demonstrates a full-stack project featuring a RESTful API backend and a single-page application (SPA) frontend, complete with role-based access control (RBAC).
 
+
 # Core Technologies
 -   MongoDB  : NoSQL database for storing application data.
 -   Express.js  : Backend framework for building the RESTful API.
